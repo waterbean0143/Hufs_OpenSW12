@@ -49,7 +49,7 @@ public class ThisActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent i = new Intent(ThisActivity.this,UserActivity.class);
+                Intent i = new Intent(ThisActivity.this,ListActivity.class);
                 i.putExtra("restName",restName[position]);
                 i.putExtra("menu",menu[position]);
                 i.putExtra("price",price[position]);
