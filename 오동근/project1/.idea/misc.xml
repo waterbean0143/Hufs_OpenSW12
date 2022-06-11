@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/and-sdk/project1/app/src/main/res/drawable/line.xml" value="0.259" />
+        <entry key="..\:/and-sdk/project1/app/src/main/res/layout/activity_list.xml" value="0.25364583333333335" />
         <entry key="..\:/and-sdk/project1/app/src/main/res/layout/activity_list_view_item.xml" value="0.22327898550724637" />
         <entry key="..\:/and-sdk/project1/app/src/main/res/layout/activity_main.xml" value="0.11911231884057971" />
         <entry key="..\:/and-sdk/project1/app/src/main/res/layout/activity_main2.xml" value="0.11911231884057971" />
@@ -13,6 +14,7 @@
         <entry key="..\:/and-sdk/project1/app/src/main/res/layout/activity_this.xml" value="0.1" />
         <entry key="..\:/and-sdk/project1/app/src/main/res/layout/activity_user.xml" value="0.1" />
         <entry key="..\:/and-sdk/project1/app/src/main/res/layout/list_item.xml" value="0.1" />
+        <entry key="..\:/and-sdk/project1/app/src/main/res/layout/list_view_item_layout.xml" value="0.25364583333333335" />
         <entry key="..\:/and-sdk/project1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.123" />
         <entry key="..\:/and-sdk/project1/app/src/main/res/xml/network_security_config.xml" value="0.1" />
       </map>
