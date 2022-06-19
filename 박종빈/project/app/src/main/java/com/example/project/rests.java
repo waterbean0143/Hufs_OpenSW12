@@ -1,9 +1,9 @@
 package com.example.project;
 
 public class rests {
-    String name;
-    Double x;
-    Double y;
+    String name; // 휴게소 이름
+    Double x;  // 휴게소의 x좌표
+    Double y;  // 휴게소의 y좌표
 
     public String getName() {
         return name;
