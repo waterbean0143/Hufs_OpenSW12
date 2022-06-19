@@ -126,7 +126,7 @@ public class MapActivity1 extends AppCompatActivity implements MapView.MapViewEv
     }
     private void onGPS(){  // gps를 활성화하는 함수
         AlertDialog.Builder builder = new AlertDialog.Builder(MapActivity1.this);
-        builder.setTitle("위치 서비스 활성화");
+        builder.setTitle("위치 서비스 활성화");  
         builder.setMessage("위치 서비스를 활성화 해야합니다.");
         builder.setCancelable(true);
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -137,7 +137,7 @@ public class MapActivity1 extends AppCompatActivity implements MapView.MapViewEv
         });
         builder.setPositiveButton("GPS설정", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            public void onClick(DialogInterface dialogInterface, int i) {  // 클릭 시 설정에서 직접 gps를 켤 수 있게 만들었다. 
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 intent.addCategory(Intent.CATEGORY_DEFAULT);
                 startActivity(intent);
