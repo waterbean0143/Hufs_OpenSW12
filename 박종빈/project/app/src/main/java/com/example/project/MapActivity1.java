@@ -44,7 +44,7 @@ public class MapActivity1 extends AppCompatActivity implements MapView.MapViewEv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(!checkLocation()){
+        if(!checkLocation()){  // gps가 꺼져있다면 gps를 켜는 함수를 호출
             onGPS();
         }
         OnCheckPermission();
@@ -82,7 +82,7 @@ public class MapActivity1 extends AppCompatActivity implements MapView.MapViewEv
         mapView.setMapViewEventListener(this);
         mapView.setPOIItemEventListener(this);
     }
-    class makelist extends Thread{
+    class makelist extends Thread{  // 쓰레드를 사용하여 휴게소목록을 api를 통해 호출한다. 
         int numOfPage;
         ArrayList<rests > list;
         public makelist(int numOfPage, ArrayList<rests > list){
@@ -124,7 +124,7 @@ public class MapActivity1 extends AppCompatActivity implements MapView.MapViewEv
             }
         }
     }
-    private void onGPS(){
+    private void onGPS(){  // gps를 활성화하는 함수
         AlertDialog.Builder builder = new AlertDialog.Builder(MapActivity1.this);
         builder.setTitle("위치 서비스 활성화");
         builder.setMessage("위치 서비스를 활성화 해야합니다.");
@@ -145,7 +145,7 @@ public class MapActivity1 extends AppCompatActivity implements MapView.MapViewEv
         });
         builder.create().show();
     }
-    public void OnCheckPermission(){
+    public void OnCheckPermission(){  // 현재 어플리케이션이 위치정보를 허용했는지 확인한다. 
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
 
         if(permissionCheck == PackageManager.PERMISSION_DENIED){ //위치 권한 확인
@@ -154,7 +154,7 @@ public class MapActivity1 extends AppCompatActivity implements MapView.MapViewEv
             ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, 0);
         }
     }
-    public boolean checkLocation(){
+    public boolean checkLocation(){ // LocationManager를 통해 현재 GPS기능이 꺼져있는지 확인한다. 
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
@@ -183,7 +183,7 @@ public class MapActivity1 extends AppCompatActivity implements MapView.MapViewEv
     public void onMapViewInitialized(MapView mapView) {
 
     }
-
+   
     @Override
     public void onMapViewCenterPointMoved(MapView mapView, MapPoint mapPoint) {
         mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeadingWithoutMapMoving);
@@ -233,12 +233,12 @@ public class MapActivity1 extends AppCompatActivity implements MapView.MapViewEv
     public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem) {
 
     }
-
+    // 지도의 말풍선을 클릭 시 호출 함수
     @Override
     public void onCalloutBalloonOfPOIItemTouched(MapView mapView, MapPOIItem mapPOIItem, MapPOIItem.CalloutBalloonButtonType calloutBalloonButtonType) {
         Log.d("Touched: ",mapPOIItem.getItemName());
         Intent i = new Intent(MapActivity1.this,ListActivity.class);
-        i.putExtra("restName",mapPOIItem.getItemName());
+        i.putExtra("restName",mapPOIItem.getItemName()); // 선택한 마커의 이름을 intent로 전송한다. 
         i.putExtra("number","1");
         startActivity(i);
     }
