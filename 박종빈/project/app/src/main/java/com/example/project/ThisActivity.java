@@ -81,18 +81,20 @@ public class ThisActivity extends AppCompatActivity {
 
         int[] imageId = {R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d,R.drawable.e,
                 R.drawable.f,R.drawable.g};
+        //image를 보내기 위함, 현재는 쓰지 않음
 
 
         ListAdapter listAdapter = new ListAdapter(ThisActivity.this,userArrayList);
 
-        binding.listview.setAdapter(listAdapter);
-        binding.listview.setClickable(true);
+        binding.listview.setAdapter(listAdapter); //listAdapter 아이템들을 바인딩한다.
+        binding.listview.setClickable(true); //아이템 하나하나를 클릭할 수 있도록 한다.
         binding.listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //클릭이벤트를 생성한다.
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent i = new Intent(ThisActivity.this,ListActivity.class);
-                i.putExtra("restName",userArrayList.get(position).restName);
+                i.putExtra("restName",userArrayList.get(position).restName); //ListActivity에 보낼 때 추가하는 휴게소 이름
                 i.putExtra("number",userArrayList.get(position).lastMsgTime);
                 startActivity(i);
 
@@ -138,13 +140,13 @@ public class ThisActivity extends AppCompatActivity {
         
         ListAdapter listAdapter = new ListAdapter(ThisActivity.this,nmData);
 
-        binding.listview.setAdapter(listAdapter);
-        binding.listview.setClickable(true);
-        binding.listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.listview.setAdapter(listAdapter);  //listAdapter binding
+        binding.listview.setClickable(true);    //선택가능하도록
+        binding.listview.setOnItemClickListener(new AdapterView.OnItemClickListener() { //클릭이벤트 구현
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent i = new Intent(ThisActivity.this,ListActivity.class);
+                Intent i = new Intent(ThisActivity.this,ListActivity.class);   //ListActivity로 인텐트
                 i.putExtra("restName",userArrayList.get(position).restName);
                 i.putExtra("number",userArrayList.get(position).lastMsgTime);
                 startActivity(i);

@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //번들에 저장된 savedInstanceState가 있으면 이 state로 만든다.
         setContentView(R.layout.activity_main);
 
         et_test = findViewById(R.id.et_test);
@@ -29,19 +30,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setMessage("정말로 종료하시겠습니까?");
-                builder.setTitle("종료 알림창")
+                builder.setTitle("종료 알림창")  //종료 알림창 Yes or No
                         .setCancelable(false)
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
                                 finish();
                             }
+                            //yes 클릭시 프로그램 종료
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int i) {
                                 dialog.cancel();
                             }
+                            //no 클릭시 dialog 취소
                         });
                 AlertDialog alert = builder.create();
                 alert.setTitle("종료 알림창");
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //버튼1
+        //버튼1 : 지도를 띄우는 액티비티로 가는 intent
         btn_to = findViewById(R.id.btn_to);
         btn_to.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
-        //버튼2
+        //버튼2 : 리스트뷰와 검색기능을 활용한 액티비티로 가는 intent
         btn_to = findViewById(R.id.btn_con);
         btn_to.setOnClickListener(new View.OnClickListener(){
             @Override
