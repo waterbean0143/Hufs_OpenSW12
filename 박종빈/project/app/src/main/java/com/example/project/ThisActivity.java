@@ -45,13 +45,15 @@ public class ThisActivity extends AppCompatActivity {
 
         //String[] restN = new String[300];
         int cnt = 1;
+        // 휴게소 이름 리스트를 가져오는 기능
         for (int pageNum = 1; pageNum < 4; pageNum++) {
+            
             String numOfRows = String.valueOf(100);
             String pageNo = String.valueOf(pageNum); //1~44
             String page = "http://data.ex.co.kr/openapi/locationinfo/locationinfoRest?key=" + key + "&type=" + type + "&numOfRows=" + numOfRows + "&pageNo=" + pageNo;
 
             try {
-                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); //Dom 파싱
                 DocumentBuilder builder = factory.newDocumentBuilder();
                 Document doc = builder.parse(page);
                 NodeList menuList = doc.getElementsByTagName("list");
@@ -60,11 +62,11 @@ public class ThisActivity extends AppCompatActivity {
 
                 for (int i = 0; i < menuList.getLength(); i++) {
                     //restN[i] = nameList.item(i).getFirstChild().getNodeValue();
-                    User user = new User();
+                    User user = new User(); //User class를 새로 생성 후 이름과 위치를 가져옴
                     user.restName = nameList.item(i).getFirstChild().getNodeValue();
                     user.location = addrList.item(i).getFirstChild().getNodeValue();
                     user.lastMsgTime = String.valueOf(cnt);
-                    userArrayList.add(user);
+                    userArrayList.add(user); // 가져온 값을 Arraylist에 추가
                     cnt++;
                 }
             } catch (ParserConfigurationException e) {
@@ -97,6 +99,8 @@ public class ThisActivity extends AppCompatActivity {
             }
         });
 
+        
+        // 텍스트에 글자를 입력하면 원하는 값만 추출하는 기능 (자동완성)
         EditText editText = findViewById(R.id.item_index);
 
         editText.addTextChangedListener(new TextWatcher() {
@@ -117,12 +121,13 @@ public class ThisActivity extends AppCompatActivity {
         });
 
     }
+    // 텍스트를 확인 후 원하는 값을 추출하는 함수
     public void searching(String val) {
 
         ArrayList<User> nmData = new ArrayList<User>();
 
         for (int i =0; i<userArrayList.size();i++){
-            if(userArrayList.get(i).restName.contains(val)){
+            if(userArrayList.get(i).restName.contains(val)){ // 가져온 텍스트 값과 휴게소 명 비교 후 한글자라도 같은 글자가 있을시 arraylist 추가
                 User user = new User();
                 user.restName = userArrayList.get(i).restName;
                 user.location = userArrayList.get(i).location;
@@ -130,6 +135,7 @@ public class ThisActivity extends AppCompatActivity {
                 nmData.add(user);
             }
         }
+        
         ListAdapter listAdapter = new ListAdapter(ThisActivity.this,nmData);
 
         binding.listview.setAdapter(listAdapter);
